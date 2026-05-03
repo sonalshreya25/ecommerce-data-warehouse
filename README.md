@@ -1,88 +1,180 @@
 #  E-Commerce Analytics for Sales & Returns Optimization
 
 ##  Project Overview
-This project focuses on designing and implementing a **data warehouse solution** for analyzing e-commerce sales and return data. The goal is to transform raw transactional data into a structured analytical model that enables efficient querying, insightful reporting, and data-driven decision-making.
+This project demonstrates the design and implementation of a **Snowflake-based data warehouse** for analyzing e-commerce sales and return data. It transforms raw transactional data into a structured dimensional model, enabling efficient querying and business intelligence.
 
-The project demonstrates end-to-end data warehousing concepts including **data ingestion, transformation, dimensional modeling, analytical SQL, and visualization**.
+ **Full Report:** [EcommerceAnalysis.pdf](./EcommerceAnalysis.pdf)
 
 ---
 
 ##  Objectives
 - Design a scalable **data warehouse (Snowflake)**
-- Transform raw transactional data into a **dimensional model**
-- Enable efficient analytical querying using SQL
-- Analyze **sales performance and return behavior**
-- Support decision-making for:
+- Implement **dimensional modeling (star schema)**
+- Enable efficient **analytical SQL queries**
+- Analyze:
+  - Sales trends  
+  - Product performance  
+  - Geographic distribution  
+  - Return patterns  
+- Support business decisions for:
   - Revenue optimization  
   - Return reduction  
   - Operational efficiency  
-  - Strategic planning  
-
----
-
-##  Dataset
-- Source: Kaggle E-commerce Sales Dataset  
-- Content: Order-level transactional data  
-- Includes:
-  - Order details  
-  - Product information  
-  - Sales amount & quantity  
-  - Shipping location  
-  - Sales channel & fulfillment  
-  - Order status (used for return analysis)  
 
 ---
 
 ##  Data Warehouse Architecture
 
-###  Dimensional Model (Star Schema)
-The warehouse follows a **star schema design** with:
+###  Star Schema Design
+![ERD](./erd/Schema%20design.png)
 
-### Fact Tables:
-- `fact_sales` → Revenue-generating transactions  
-- `fact_returns` → Return-related events  
+The system uses a **star schema** with:
+- **Fact Tables:** `fact_sales`, `fact_returns`
+- **Dimension Tables:** Product, Time, Geography, Channel, Promotion, B2B
 
-### Dimension Tables:
-- `dim_product` → Product attributes  
-- `dim_time` → Time hierarchy (month, year, quarter)  
-- `dim_geography` → Location (city, state, country)  
-- `dim_sales_channel` → Channel & fulfillment details  
-- `dim_promotion` → Promotion metadata  
-- `dim_b2b_status` → Customer segment  
+✔ Enables fast querying  
+✔ Simplifies analysis  
+✔ Supports multi-dimensional insights  
 
 ---
 
-## Key Analysis & Insights
-
-###  Sales Trends
-- Sales show **irregular spikes**, indicating event-driven growth  
-- Peak performance observed during specific months  
-
-###  Category Performance
-- Revenue is highly concentrated in a few categories  
-- Follows a **Pareto pattern (80/20 rule)**  
-
-###  Geographic Insights
-- Sales are concentrated in major urban regions  
-- Indicates expansion opportunities in underperforming areas  
-
-###  Returns Analysis
-- Returns are **not evenly distributed**
-- Certain regions show higher return risk  
-- Suggests operational or product-level issues  
-
-### Channel Performance
-- Variation observed across channels  
-- Opportunity for **channel optimization**
+##  Key Insights & Visual Analysis
 
 ---
 
-## Technologies Used
-- **Snowflake** → Data warehouse  
-- **SQL** → Data transformation & analytics  
-- **Power BI** → Data visualization  
-- **Kaggle Dataset** → Data source  
+##  1. Sales Performance & Growth Trends
+![Sales Trend](./Visuals/Sales%20Performance%20and%20growth%20trends.png)
+
+**Insight:**  
+Sales are highly volatile and depend on spikes rather than steady growth.
+
+**Takeaway:**  
+Growth is event-driven → need consistent demand strategies.
 
 ---
 
-## 📁 Repository Structure
+##  2. Revenue by Product Category
+![Category Revenue](./Visuals/Sales%20Performance%20overview.png)
+
+**Insight:**  
+A few categories dominate revenue (Set, Kurta, Western Dress).
+
+**Takeaway:**  
+Heavy dependency on core categories → optimize weaker ones.
+
+---
+
+##  3. Category Contribution (Pareto Effect)
+![Category Contribution](./Visuals/Category%20contribution%20analysis.png)
+
+**Insight:**  
+Revenue follows a **Pareto distribution (80/20 rule)**.
+
+**Takeaway:**  
+Small number of categories drive most revenue.
+
+---
+
+##  4. Geographic Distribution of Sales
+![Geographic Sales](./Visuals/Geographic%20Distribution%20of%20sales.png)
+
+**Insight:**  
+Sales are concentrated in major urban areas.
+
+**Takeaway:**  
+Opportunity to expand into underperforming regions.
+
+---
+
+##  5. State-Level Sales Distribution
+![State Distribution](./Visuals/Geographic%20distribution.png)
+
+**Insight:**  
+Some states contribute significantly more orders.
+
+**Takeaway:**  
+Regional demand varies → targeted strategies needed.
+
+---
+
+##  6. Returns Distribution & Risk Analysis
+![Returns](./Visuals/Return%20distrubution.png)
+
+**Insight:**  
+Returns are concentrated in specific cities.
+
+**Takeaway:**  
+Indicates localized operational or product issues.
+
+---
+
+##  7. Monthly Sales Trends
+![Monthly Sales](./Visuals/monthy%20scales.png)
+
+**Insight:**  
+- Rapid growth (March → April)  
+- Peak in April/May  
+- Decline in June  
+
+**Takeaway:**  
+Sales are not consistent → need retention strategies.
+
+---
+
+##  8. Category Distribution (EDA)
+![Category Distribution](./Visuals/CategoryDistribution.png)
+
+**Insight:**  
+Dataset is skewed toward certain categories.
+
+**Takeaway:**  
+Reflects real business concentration.
+
+---
+
+## Power BI Dashboard
+![Dashboard](./Visuals/powerBi%20dashboard.png)
+
+Interactive dashboard combining:
+- Sales trends  
+- Category performance  
+- Geographic insights  
+- Return risk  
+
+---
+
+##  Technologies Used
+- Snowflake  
+- SQL  
+- Power BI  
+- Kaggle Dataset  
+
+---
+
+
+---
+
+##  Key Takeaways
+- Data warehouse enables **scalable analytics**
+- Star schema simplifies complex queries
+- Revenue concentration → business dependency
+- Returns highlight operational inefficiencies
+- Insights support strategic decision-making
+
+---
+
+##  Limitations
+- No customer-level data  
+- Static dataset  
+
+---
+
+##  Future Work
+- Add customer segmentation  
+- Build real-time pipelines  
+- Apply machine learning models  
+- Improve dashboard interactivity  
+
+---
+
+This project demonstrates how data warehousing transforms raw transactional data into actionable insights for modern e-commerce decision-making.
